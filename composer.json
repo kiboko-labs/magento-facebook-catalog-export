@@ -11,19 +11,19 @@
     "autoload": {
         "psr-4": {
             "Kiboko\\Component\\FacebookCatalog\\": "src/FacebookCatalog/",
-            "Kiboko\\Component\\FacebookCatalogBundle\\": "src/FacebookCatalogBundle/"
+            "Kiboko\\Bundle\\FacebookCatalogBundle\\": "src/FacebookCatalogBundle/"
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Kiboko\\Component\\FacebookCatalog\\Tests\\": "tests/FacebookCatalog/",
-            "Kiboko\\Component\\FacebookCatalogBundle\\Tests\\": "tests/FacebookCatalogBundle/"
+            "Kiboko\\Component\\FacebookCatalogTests\\": "tests/FacebookCatalog/",
+            "Kiboko\\Bundle\\FacebookCatalogBundleTests\\": "tests/FacebookCatalogBundle/"
         }
     },
     "require": {
         "php": ">=5.5.9",
-        "symfony/symfony": "3.1.*",
+        "symfony/symfony": "^2.8",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
@@ -35,7 +35,6 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "akeneo/batch": "^0.6.0@dev",
         "psr/log": "^1.0",
-        "monolog/monolog": "^1.20",
         "kiboko/native-magento-driver": "dev-master"
     },
     "require-dev": {
@@ -82,6 +81,7 @@
             "php": "5.5.9"
         }
     },
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",

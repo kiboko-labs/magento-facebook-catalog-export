@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ab7412657f70cf9527921416132ce3ac",
-    "content-hash": "40902f1f30112c3bc977886135d677c4",
+    "hash": "36b2b3714f7055f7bfc3af557e1888ce",
+    "content-hash": "1402c81d1bc5684c73b5e99c2834866d",
     "packages": [
         {
             "name": "akeneo/batch",
@@ -392,24 +392,24 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "dev-master",
+            "version": "2.5.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "45939c61df532608c67a92733b7cd1e64455abc1"
+                "reference": "e69d1cf3bddd269e76d68eb81823c01f02b230d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/45939c61df532608c67a92733b7cd1e64455abc1",
-                "reference": "45939c61df532608c67a92733b7cd1e64455abc1",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/e69d1cf3bddd269e76d68eb81823c01f02b230d0",
+                "reference": "e69d1cf3bddd269e76d68eb81823c01f02b230d0",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": "~2.4",
-                "php": "^5.6 || ^7.0"
+                "doctrine/common": ">=2.4,<2.7-dev",
+                "php": ">=5.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.4.6",
+                "phpunit/phpunit": "4.*",
                 "symfony/console": "2.*"
             },
             "suggest": {
@@ -421,7 +421,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6.x-dev"
+                    "dev-master": "2.5.x-dev"
                 }
             },
             "autoload": {
@@ -459,7 +459,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2016-07-20 13:35:22"
+            "time": "2016-07-15 21:22:45"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -806,37 +806,38 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "dev-master",
+            "version": "2.5.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "184f7d3285116b79e48fec0a7bad08964e11e8c6"
+                "reference": "aa5820309e80e746411100f073b8bf0a0a684082"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/184f7d3285116b79e48fec0a7bad08964e11e8c6",
-                "reference": "184f7d3285116b79e48fec0a7bad08964e11e8c6",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/aa5820309e80e746411100f073b8bf0a0a684082",
+                "reference": "aa5820309e80e746411100f073b8bf0a0a684082",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "~1.4",
                 "doctrine/collections": "~1.2",
                 "doctrine/common": ">=2.5-dev,<2.7-dev",
-                "doctrine/dbal": ">=2.5-dev,<2.7-dev",
+                "doctrine/dbal": ">=2.5-dev,<2.6-dev",
                 "doctrine/instantiator": "~1.0.1",
                 "ext-pdo": "*",
-                "php": "^5.6 || ^7.0",
+                "php": ">=5.4",
                 "symfony/console": "~2.5|~3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.4",
+                "phpunit/phpunit": "~4.0",
                 "symfony/yaml": "~2.3|~3.0"
             },
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
             },
             "bin": [
-                "bin/doctrine"
+                "bin/doctrine",
+                "bin/doctrine.php"
             ],
             "type": "library",
             "extra": {
@@ -845,8 +846,8 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Doctrine\\ORM\\": "lib/Doctrine/ORM"
+                "psr-0": {
+                    "Doctrine\\ORM\\": "lib/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -869,10 +870,6 @@
                 {
                     "name": "Jonathan Wage",
                     "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com"
                 }
             ],
             "description": "Object-Relational-Mapper for PHP",
@@ -881,7 +878,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2016-07-20 13:25:22"
+            "time": "2016-06-19 10:48:28"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1028,47 +1025,6 @@
                 "sql"
             ],
             "time": "2015-08-30 16:36:01"
-        },
-        {
-            "name": "kiboko/akeneo-connector-base",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lunistore/akeneo-connector-base.git",
-                "reference": "45f339fe4f10486446148b679d24d4642fc5f3d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lunistore/akeneo-connector-base/zipball/45f339fe4f10486446148b679d24d4642fc5f3d4",
-                "reference": "45f339fe4f10486446148b679d24d4642fc5f3d4",
-                "shasum": ""
-            },
-            "require-dev": {
-                "akeneo/pim-community-dev": "1.5.*",
-                "fzaninotto/faker": "dev-master",
-                "phpspec/phpspec": "~2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kiboko\\Component\\Connector\\": "src/Connector/"
-                }
-            },
-            "license": [
-                "LGPL"
-            ],
-            "authors": [
-                {
-                    "name": "Grégory Planchat",
-                    "email": "gregory@luni.fr"
-                }
-            ],
-            "description": "Base tools to build Akeneo connectors",
-            "support": {
-                "source": "https://github.com/lunistore/akeneo-connector-base/tree/master",
-                "issues": "https://github.com/lunistore/akeneo-connector-base/issues"
-            },
-            "time": "2016-06-19 16:30:59"
         },
         {
             "name": "kiboko/native-magento-driver",
@@ -1596,63 +1552,6 @@
                 "mailer"
             ],
             "time": "2016-07-09 18:06:48"
-        },
-        {
-            "name": "symfony/framework-standard-edition",
-            "version": "2.8.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/symfony-standard.git",
-                "reference": "d92a163727d21110db8ff551fbb65d6c43b2c268"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony-standard/zipball/d92a163727d21110db8ff551fbb65d6c43b2c268",
-                "reference": "d92a163727d21110db8ff551fbb65d6c43b2c268",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/doctrine-bundle": "~1.4",
-                "doctrine/orm": "^2.4.8",
-                "incenteev/composer-parameter-handler": "~2.0",
-                "php": ">=5.3.9",
-                "sensio/distribution-bundle": "~5.0",
-                "sensio/framework-extra-bundle": "^3.0.2",
-                "symfony/monolog-bundle": "~2.4",
-                "symfony/swiftmailer-bundle": "~2.3",
-                "symfony/symfony": "2.8.*"
-            },
-            "require-dev": {
-                "sensio/generator-bundle": "~3.0",
-                "symfony/phpunit-bridge": "~2.7"
-            },
-            "type": "project",
-            "extra": {
-                "symfony-app-dir": "app",
-                "symfony-web-dir": "web",
-                "symfony-assets-install": "relative",
-                "incenteev-parameters": {
-                    "file": "app/config/parameters.yml"
-                },
-                "branch-alias": {
-                    "dev-master": "2.8-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "": "src/"
-                },
-                "classmap": [
-                    "app/AppKernel.php",
-                    "app/AppCache.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "The \"Symfony Standard Edition\" distribution",
-            "time": "2016-07-03 07:11:31"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -2480,15 +2379,128 @@
             "time": "2016-05-30 09:07:11"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "sensio/generator-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
+                "reference": "5696bff02626571bb562454291c5f71becf388d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/5696bff02626571bb562454291c5f71becf388d6",
+                "reference": "5696bff02626571bb562454291c5f71becf388d6",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": "~2.7|~3.0",
+                "symfony/framework-bundle": "~2.7|~3.0",
+                "symfony/process": "~2.7|~3.0",
+                "symfony/yaml": "~2.7|~3.0"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.4",
+                "symfony/doctrine-bridge": "~2.7|~3.0",
+                "twig/twig": "~1.18"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sensio\\Bundle\\GeneratorBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "This bundle generates code for you",
+            "time": "2016-07-26 10:53:57"
+        },
+        {
+            "name": "symfony/phpunit-bridge",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/phpunit-bridge.git",
+                "reference": "ba5807105e4f00553da6522aa5978c5628e85015"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/ba5807105e4f00553da6522aa5978c5628e85015",
+                "reference": "ba5807105e4f00553da6522aa5978c5628e85015",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
+            },
+            "type": "symfony-bridge",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Bridge\\PhpUnit\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony PHPUnit Bridge",
+            "homepage": "https://symfony.com",
+            "time": "2016-06-29 05:43:10"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "kiboko/native-magento-driver": 20,
-        "akeneo/batch": 20
+        "akeneo/batch": 20,
+        "kiboko/native-magento-driver": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": []
+    "platform": {
+        "php": ">=5.5.9"
+    },
+    "platform-dev": [],
+    "platform-overrides": {
+        "php": "5.5.9"
+    }
 }
