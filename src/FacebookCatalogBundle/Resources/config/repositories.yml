@@ -1,0 +1,77 @@
+parameters:
+  kiboko.magento_stockpile.repository.doctrine.catalog_attribute.class:       Kiboko\Component\MagentoDriver\Repository\Doctrine\ProductAttributeRepository
+  kiboko.magento_stockpile.repository.doctrine.family.class:                  Kiboko\Component\MagentoDriver\Repository\Doctrine\FamilyRepository
+  kiboko.magento_stockpile.repository.doctrine.product_attribute_value.class: Kiboko\Component\MagentoDriver\Repository\Doctrine\ProductAttributeValueRepository
+
+  kiboko.magento_stockpile.repository.facade.product_attribute_value.class: Kiboko\Component\MagentoDriver\Repository\ProductAttributeValueRepositoryFacade
+
+  kiboko.magento_stockpile.repository.cached.family.class: Kiboko\Component\MagentoDriver\Repository\CachedRepository\CachedFamilyRepository
+
+services:
+  kiboko.magento_stockpile.repository.doctrine.catalog_attribute:
+    class: '%kiboko.magento_stockpile.repository.doctrine.catalog_attribute.class%'
+    arguments:
+      - '@database.connection'
+      - '@kiboko.magento_stockpile.query_builder.product_attribute'
+
+  kiboko.magento_stockpile.repository.doctrine.family:
+    class: '%kiboko.magento_stockpile.repository.doctrine.family.class%'
+    arguments:
+      - '@database.connection'
+      - '@kiboko.magento_stockpile.query_builder.family'
+
+  kiboko.magento_stockpile.repository.doctrine.product_attribute_value.datetime:
+    parent: 'kiboko.magento_stockpile.repository.doctrine.product_attribute_value'
+    arguments:
+      - '@database.connection'
+      - '@kiboko.magento_stockpile.query_builder.product_attribute_value.datetime'
+      - '@kiboko.magento_stockpile.repository.doctrine.attribute'
+      - '@kiboko.magento_stockpile.factory.product_attribute_value.datetime'
+    tags:
+      - { name: kiboko.magento_stockpile.repository.product_attribute_value, backend: datetime }
+
+  kiboko.magento_stockpile.repository.doctrine.product_attribute_value.decimal:
+    parent: 'kiboko.magento_stockpile.repository.doctrine.product_attribute_value'
+    arguments:
+      - '@database.connection'
+      - '@kiboko.magento_stockpile.query_builder.product_attribute_value.decimal'
+      - '@kiboko.magento_stockpile.repository.doctrine.attribute'
+      - '@kiboko.magento_stockpile.factory.product_attribute_value.decimal'
+    tags:
+      - { name: kiboko.magento_stockpile.repository.product_attribute_value, backend: decimal }
+
+  kiboko.magento_stockpile.repository.doctrine.product_attribute_value.integer:
+    parent: 'kiboko.magento_stockpile.repository.doctrine.product_attribute_value'
+    arguments:
+      - '@database.connection'
+      - '@kiboko.magento_stockpile.query_builder.product_attribute_value.integer'
+      - '@kiboko.magento_stockpile.repository.doctrine.attribute'
+      - '@kiboko.magento_stockpile.factory.product_attribute_value.integer'
+    tags:
+      - { name: kiboko.magento_stockpile.repository.product_attribute_value, backend: int }
+
+  kiboko.magento_stockpile.repository.doctrine.product_attribute_value.text:
+    parent: 'kiboko.magento_stockpile.repository.doctrine.product_attribute_value'
+    arguments:
+      - '@database.connection'
+      - '@kiboko.magento_stockpile.query_builder.product_attribute_value.text'
+      - '@kiboko.magento_stockpile.repository.doctrine.attribute'
+      - '@kiboko.magento_stockpile.factory.product_attribute_value.text'
+    tags:
+      - { name: kiboko.magento_stockpile.repository.product_attribute_value, backend: text }
+
+  kiboko.magento_stockpile.repository.doctrine.product_attribute_value.varchar:
+    parent: 'kiboko.magento_stockpile.repository.doctrine.product_attribute_value'
+    arguments:
+      - '@database.connection'
+      - '@kiboko.magento_stockpile.query_builder.product_attribute_value.varchar'
+      - '@kiboko.magento_stockpile.repository.doctrine.attribute'
+      - '@kiboko.magento_stockpile.factory.product_attribute_value.varchar'
+    tags:
+      - { name: kiboko.magento_stockpile.repository.product_attribute_value, backend: varchar }
+
+  kiboko.magento_stockpile.repository.cached.family:
+    class: '%kiboko.magento_stockpile.repository.cached.family.class%'
+    arguments:
+      - '@kiboko.magento_stockpile.repository.doctrine.family'
+

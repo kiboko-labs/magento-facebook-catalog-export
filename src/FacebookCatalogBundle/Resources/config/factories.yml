@@ -1,0 +1,26 @@
+parameters:
+  kiboko.magento_driver.factory.product.facade.class: Kiboko\Component\MagentoDriver\Factory\StandardProductFactory
+  kiboko.magento_driver.factory.product.simple.class: Kiboko\Component\MagentoDriver\Factory\Product\SimpleProductFactory
+  kiboko.magento_driver.factory.product.configurable.class: Kiboko\Component\MagentoDriver\Factory\Product\ConfigurableProductFactory
+
+  kiboko.magento_driver.factory.product_attribute_value.facade.class: Kiboko\Component\MagentoDriver\Factory\StandardProductAttributeValueFactory
+
+services:
+  kiboko.magento_driver.factory.product.simple:
+    class: '%kiboko.magento_driver.factory.product.simple.class%'
+    arguments:
+      - '@kiboko.magento_driver.repository.family'
+
+  kiboko.magento_driver.factory.product.configurable:
+    class: '%kiboko.magento_driver.factory.product.configurable.class%'
+    arguments:
+      - '@kiboko.magento_driver.repository.family'
+
+  kiboko.magento_driver.factory.product.facade:
+    class: '%kiboko.magento_driver.factory.product.facade.class%'
+    calls:
+      - ['addBuilder', ['simple', '@kiboko.magento_driver.factory.product.simple']]
+      - ['addBuilder', ['configurable', '@kiboko.magento_driver.factory.product.configurable']]
+
+  kiboko.magento_driver.factory.product_attribute_value.facade:
+    class: '%kiboko.magento_driver.factory.product_attribute_value.facade.class%'
