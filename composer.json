@@ -38,6 +38,10 @@
         "kiboko/native-magento-driver": "dev-master",
         "kiboko/akeneo-connector-base": "^1.1"
     },
+    "provide": {
+        "kiboko/magento-facebook-catalog": "dev-master",
+        "kiboko/magento-facebook-catalog-bundle": "dev-master"
+    },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"

@@ -1,0 +1,18 @@
+{
+    "name": "kiboko/magento-facebook-catalog-bundle",
+    "description": "Export your Magento catalog to Facebook Business",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Grégory Planchat",
+            "email": "gregory@luni.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "akeneo/batch": "^0.6.0@dev",
+        "kiboko/native-magento-driver": "dev-master",
+        "kiboko/akeneo-connector-base": "^1.1"
+    }
+}
