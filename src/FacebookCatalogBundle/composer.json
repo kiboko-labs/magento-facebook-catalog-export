@@ -15,5 +15,22 @@
         "kiboko/native-magento-driver": "dev-master",
         "kiboko/akeneo-connector-base": "^1.1",
         "kiboko/magento-facebook-catalog": "dev-master"
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:lunistore/native-magento-driver.git",
+            "branch": "master"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:akeneo/pim-community-dev.git",
+            "branch": "master"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:lunistore/akeneo-connector-base.git",
+            "branch": "master"
+        }
+    ]
 }
