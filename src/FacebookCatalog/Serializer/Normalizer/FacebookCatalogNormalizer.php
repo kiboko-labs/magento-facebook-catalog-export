@@ -208,7 +208,7 @@ class FacebookCatalogNormalizer implements NormalizerInterface
         }
 
         if ($this->imageNormalizer->supportsNormalization($value)) {
-            return $this->imageNormalizer->normalize($object);
+            return $this->imageNormalizer->normalize($value);
         }
 
         return null;
@@ -228,7 +228,7 @@ class FacebookCatalogNormalizer implements NormalizerInterface
         }
 
         if ($this->descriptionNormalizer->supportsNormalization($value)) {
-            return $this->descriptionNormalizer->normalize($object);
+            return $this->descriptionNormalizer->normalize($value);
         }
 
         return null;
