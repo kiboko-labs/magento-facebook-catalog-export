@@ -1,26 +1,85 @@
 parameters:
-  kiboko.magento_driver.factory.product.facade.class: Kiboko\Component\MagentoDriver\Factory\StandardProductFactory
-  kiboko.magento_driver.factory.product.simple.class: Kiboko\Component\MagentoDriver\Factory\Product\SimpleProductFactory
-  kiboko.magento_driver.factory.product.configurable.class: Kiboko\Component\MagentoDriver\Factory\Product\ConfigurableProductFactory
+  kiboko.facebook_catalog.factory.product.facade.class:       Kiboko\Component\MagentoDriver\Factory\StandardProductFactory
+  kiboko.facebook_catalog.factory.product.simple.class:       Kiboko\Component\MagentoDriver\Factory\Product\SimpleProductFactory
+  kiboko.facebook_catalog.factory.product.configurable.class: Kiboko\Component\MagentoDriver\Factory\Product\ConfigurableProductFactory
 
-  kiboko.magento_driver.factory.product_attribute_value.facade.class: Kiboko\Component\MagentoDriver\Factory\StandardProductAttributeValueFactory
+  kiboko.facebook_catalog.factory.product_attribute_value.facade.class:   Kiboko\Component\MagentoDriver\Factory\StandardProductAttributeValueFactory
+  kiboko.facebook_catalog.factory.product_attribute_value.datetime.class: Kiboko\Component\MagentoDriver\Factory\ProductAttributeValue\DatetimeProductAttributeValueFactory
+  kiboko.facebook_catalog.factory.product_attribute_value.decimal.class:  Kiboko\Component\MagentoDriver\Factory\ProductAttributeValue\DecimalProductAttributeValueFactory
+  kiboko.facebook_catalog.factory.product_attribute_value.integer.class:  Kiboko\Component\MagentoDriver\Factory\ProductAttributeValue\IntegerProductAttributeValueFactory
+  kiboko.facebook_catalog.factory.product_attribute_value.text.class:     Kiboko\Component\MagentoDriver\Factory\ProductAttributeValue\TextProductAttributeValueFactory
+  kiboko.facebook_catalog.factory.product_attribute_value.varchar.class:  Kiboko\Component\MagentoDriver\Factory\ProductAttributeValue\VarcharProductAttributeValueFactory
+
+  kiboko.facebook_catalog.factory.family.class: Kiboko\Component\MagentoDriver\Factory\StandardFamilyFactory
 
 services:
-  kiboko.magento_driver.factory.product.simple:
-    class: '%kiboko.magento_driver.factory.product.simple.class%'
+  kiboko.facebook_catalog.factory.product.simple:
+    class: '%kiboko.facebook_catalog.factory.product.simple.class%'
     arguments:
-      - '@kiboko.magento_driver.repository.family'
+      - '@kiboko.facebook_catalog.repository.cached.family'
+    tags:
+      - { name: kiboko.facebook_catalog.factory.product, type: simple }
 
-  kiboko.magento_driver.factory.product.configurable:
-    class: '%kiboko.magento_driver.factory.product.configurable.class%'
+  kiboko.facebook_catalog.factory.product.configurable:
+    class: '%kiboko.facebook_catalog.factory.product.configurable.class%'
     arguments:
-      - '@kiboko.magento_driver.repository.family'
+      - '@kiboko.facebook_catalog.repository.cached.family'
+    tags:
+      - { name: kiboko.facebook_catalog.factory.product, type: configurable }
 
-  kiboko.magento_driver.factory.product.facade:
-    class: '%kiboko.magento_driver.factory.product.facade.class%'
-    calls:
-      - ['addBuilder', ['simple', '@kiboko.magento_driver.factory.product.simple']]
-      - ['addBuilder', ['configurable', '@kiboko.magento_driver.factory.product.configurable']]
+  kiboko.facebook_catalog.factory.product.bundle:
+    class: '%kiboko.facebook_catalog.factory.product.simple.class%'
+    arguments:
+      - '@kiboko.facebook_catalog.repository.cached.family'
+    tags:
+      - { name: kiboko.facebook_catalog.factory.product, type: bundle }
 
-  kiboko.magento_driver.factory.product_attribute_value.facade:
-    class: '%kiboko.magento_driver.factory.product_attribute_value.facade.class%'
+  kiboko.facebook_catalog.factory.product.grouped:
+    class: '%kiboko.facebook_catalog.factory.product.simple.class%'
+    arguments:
+      - '@kiboko.facebook_catalog.repository.cached.family'
+    tags:
+      - { name: kiboko.facebook_catalog.factory.product, type: grouped }
+
+  kiboko.facebook_catalog.factory.product.virtual:
+    class: '%kiboko.facebook_catalog.factory.product.simple.class%'
+    arguments:
+      - '@kiboko.facebook_catalog.repository.cached.family'
+    tags:
+      - { name: kiboko.facebook_catalog.factory.product, type: virtual }
+
+  kiboko.facebook_catalog.factory.product.facade:
+    class: '%kiboko.facebook_catalog.factory.product.facade.class%'
+    arguments:
+     - '@kiboko.facebook_catalog.factory.product.broker'
+
+  kiboko.facebook_catalog.factory.product_attribute_value.datetime:
+    class: '%kiboko.facebook_catalog.factory.product_attribute_value.datetime.class%'
+    tags:
+      - { name: kiboko.facebook_catalog.factory.product_attribute_value, backend: datetime }
+
+  kiboko.facebook_catalog.factory.product_attribute_value.decimal:
+    class: '%kiboko.facebook_catalog.factory.product_attribute_value.decimal.class%'
+    tags:
+      - { name: kiboko.facebook_catalog.factory.product_attribute_value, backend: decimal }
+
+  kiboko.facebook_catalog.factory.product_attribute_value.integer:
+    class: '%kiboko.facebook_catalog.factory.product_attribute_value.integer.class%'
+    tags:
+      - { name: kiboko.facebook_catalog.factory.product_attribute_value, backend: int }
+
+  kiboko.facebook_catalog.factory.product_attribute_value.text:
+    class: '%kiboko.facebook_catalog.factory.product_attribute_value.text.class%'
+    tags:
+      - { name: kiboko.facebook_catalog.factory.product_attribute_value, backend: text }
+
+  kiboko.facebook_catalog.factory.product_attribute_value.varchar:
+    class: '%kiboko.facebook_catalog.factory.product_attribute_value.varchar.class%'
+    tags:
+      - { name: kiboko.facebook_catalog.factory.product_attribute_value, backend: varchar }
+
+  kiboko.facebook_catalog.factory.product_attribute_value.facade:
+    class: '%kiboko.facebook_catalog.factory.product_attribute_value.facade.class%'
+
+  kiboko.facebook_catalog.factory.family:
+    class: '%kiboko.facebook_catalog.factory.family.class%'

@@ -1,0 +1,8 @@
+parameters:
+  kiboko.facebook_catalog.hydrator.product_attribute_value.class: Kiboko\Component\MagentoDriver\Hydrator\ProductAttributeValueHydrator
+
+services:
+  kiboko.facebook_catalog.hydrator.product_attribute_value:
+    class: '%kiboko.facebook_catalog.hydrator.product_attribute_value.class%'
+    arguments:
+      - '@kiboko.facebook_catalog.repository.facade.product_attribute_value'

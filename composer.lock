@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "36b2b3714f7055f7bfc3af557e1888ce",
-    "content-hash": "1402c81d1bc5684c73b5e99c2834866d",
+    "hash": "1a3575a58b174599548ccabcacc852a9",
+    "content-hash": "8eb13d28442a67da89e371debfd66e38",
     "packages": [
         {
             "name": "akeneo/batch",
@@ -113,6 +113,68 @@
                 "persistence"
             ],
             "time": "2016-05-07 10:48:09"
+        },
+        {
+            "name": "composer/semver",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/semver.git",
+                "reference": "ff4141fbf39ae5cc2cde89b79f9bf4f1566e8294"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/semver/zipball/ff4141fbf39ae5cc2cde89b79f9bf4f1566e8294",
+                "reference": "ff4141fbf39ae5cc2cde89b79f9bf4f1566e8294",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.2 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.5 || ^5.0.5",
+                "phpunit/phpunit-mock-objects": "2.3.0 || ^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\Semver\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nils Adermann",
+                    "email": "naderman@naderman.de",
+                    "homepage": "http://www.naderman.de"
+                },
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                },
+                {
+                    "name": "Rob Bast",
+                    "email": "rob.bast@gmail.com",
+                    "homepage": "http://robbast.nl"
+                }
+            ],
+            "description": "Semver library that offers utilities, version constraint parsing and validation.",
+            "keywords": [
+                "semantic",
+                "semver",
+                "validation",
+                "versioning"
+            ],
+            "time": "2016-07-11 07:07:44"
         },
         {
             "name": "doctrine/annotations",
@@ -1027,20 +1089,62 @@
             "time": "2015-08-30 16:36:01"
         },
         {
+            "name": "kiboko/akeneo-connector-base",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lunistore/akeneo-connector-base.git",
+                "reference": "45f339fe4f10486446148b679d24d4642fc5f3d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lunistore/akeneo-connector-base/zipball/45f339fe4f10486446148b679d24d4642fc5f3d4",
+                "reference": "45f339fe4f10486446148b679d24d4642fc5f3d4",
+                "shasum": ""
+            },
+            "require-dev": {
+                "akeneo/pim-community-dev": "1.5.*",
+                "fzaninotto/faker": "dev-master",
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kiboko\\Component\\Connector\\": "src/Connector/"
+                }
+            },
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Grégory Planchat",
+                    "email": "gregory@luni.fr"
+                }
+            ],
+            "description": "Base tools to build Akeneo connectors",
+            "support": {
+                "source": "https://github.com/lunistore/akeneo-connector-base/tree/master",
+                "issues": "https://github.com/lunistore/akeneo-connector-base/issues"
+            },
+            "time": "2016-06-19 16:30:59"
+        },
+        {
             "name": "kiboko/native-magento-driver",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:lunistore/native-magento-driver.git",
-                "reference": "0faa21a0e104688498b139cfc05d246c898606bb"
+                "reference": "235f1b623b833ee6f0e4f7d3603a5722d11d2c11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lunistore/native-magento-driver/zipball/0faa21a0e104688498b139cfc05d246c898606bb",
-                "reference": "0faa21a0e104688498b139cfc05d246c898606bb",
+                "url": "https://api.github.com/repos/lunistore/native-magento-driver/zipball/235f1b623b833ee6f0e4f7d3603a5722d11d2c11",
+                "reference": "235f1b623b833ee6f0e4f7d3603a5722d11d2c11",
                 "shasum": ""
             },
             "require": {
+                "composer/semver": "^1.4",
                 "doctrine/dbal": "~2.4",
                 "league/flysystem": "~1.0",
                 "php": ">=5.5",
@@ -1052,9 +1156,11 @@
                 "fzaninotto/faker": "dev-master",
                 "lunistore/akeneo-connector-base": "~1.0",
                 "phploc/phploc": "*",
+                "phpmd/phpmd": "*",
                 "phpspec/phpspec": "~2.0",
                 "phpunit/dbunit": "dev-master",
-                "phpunit/phpunit": "~5.2"
+                "phpunit/phpunit": "~5.2",
+                "sebastian/phpcpd": "*"
             },
             "type": "library",
             "autoload": {
@@ -1084,7 +1190,7 @@
                 "source": "https://github.com/lunistore/native-magento-driver/tree/master",
                 "issues": "https://github.com/lunistore/native-magento-driver/issues"
             },
-            "time": "2016-07-25 16:28:25"
+            "time": "2016-07-28 17:10:03"
         },
         {
             "name": "league/flysystem",

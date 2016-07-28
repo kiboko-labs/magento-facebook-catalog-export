@@ -1,77 +1,122 @@
 parameters:
-  kiboko.magento_stockpile.repository.doctrine.catalog_attribute.class:       Kiboko\Component\MagentoDriver\Repository\Doctrine\ProductAttributeRepository
-  kiboko.magento_stockpile.repository.doctrine.family.class:                  Kiboko\Component\MagentoDriver\Repository\Doctrine\FamilyRepository
-  kiboko.magento_stockpile.repository.doctrine.product_attribute_value.class: Kiboko\Component\MagentoDriver\Repository\Doctrine\ProductAttributeValueRepository
+  kiboko.facebook_catalog.repository.doctrine.catalog_attribute.class:       Kiboko\Component\MagentoDriver\Repository\Doctrine\ProductAttributeRepository
+  kiboko.facebook_catalog.repository.doctrine.family.class:                  Kiboko\Component\MagentoDriver\Repository\Doctrine\FamilyRepository
+  kiboko.facebook_catalog.repository.doctrine.product_attribute.class:       Kiboko\Component\MagentoDriver\Repository\Doctrine\ProductAttributeRepository
+  kiboko.facebook_catalog.repository.doctrine.product_attribute.class:       Kiboko\Component\MagentoDriver\Repository\Doctrine\CatalogAttributeRepository
+  kiboko.facebook_catalog.repository.doctrine.product_attribute_value.class: Kiboko\Component\MagentoDriver\Repository\Doctrine\ProductAttributeValueRepository
+  kiboko.facebook_catalog.repository.doctrine.product.class:                 Kiboko\Component\MagentoDriver\Repository\Doctrine\ProductRepository
 
-  kiboko.magento_stockpile.repository.facade.product_attribute_value.class: Kiboko\Component\MagentoDriver\Repository\ProductAttributeValueRepositoryFacade
+  kiboko.facebook_catalog.repository.dummy.inventory.class:               Kiboko\Component\MagentoDriver\Repository\Dummy\ProductInventoryRepository
+  kiboko.facebook_catalog.repository.dummy.url_rewrite.class:             Kiboko\Component\MagentoDriver\Repository\Dummy\ProductUrlRewriteRepository
 
-  kiboko.magento_stockpile.repository.cached.family.class: Kiboko\Component\MagentoDriver\Repository\CachedRepository\CachedFamilyRepository
+  kiboko.facebook_catalog.repository.facade.product_attribute_value.class: Kiboko\Component\MagentoDriver\Repository\ProductAttributeValueRepositoryFacade
+
+  kiboko.facebook_catalog.repository.cached.product_attribute.class: Kiboko\Component\MagentoDriver\Repository\CachedRepository\CachedProductAttributeRepository
+  kiboko.facebook_catalog.repository.cached.family.class:            Kiboko\Component\MagentoDriver\Repository\CachedRepository\CachedFamilyRepository
 
 services:
-  kiboko.magento_stockpile.repository.doctrine.catalog_attribute:
-    class: '%kiboko.magento_stockpile.repository.doctrine.catalog_attribute.class%'
+  kiboko.facebook_catalog.repository.doctrine.catalog_attribute:
+    class: '%kiboko.facebook_catalog.repository.doctrine.catalog_attribute.class%'
     arguments:
-      - '@database.connection'
-      - '@kiboko.magento_stockpile.query_builder.product_attribute'
+      - '@database_connection'
+      - '@kiboko.facebook_catalog.query_builder.product_attribute'
 
-  kiboko.magento_stockpile.repository.doctrine.family:
-    class: '%kiboko.magento_stockpile.repository.doctrine.family.class%'
+  kiboko.facebook_catalog.repository.doctrine.family:
+    class: '%kiboko.facebook_catalog.repository.doctrine.family.class%'
     arguments:
-      - '@database.connection'
-      - '@kiboko.magento_stockpile.query_builder.family'
+      - '@database_connection'
+      - '@kiboko.facebook_catalog.query_builder.family'
+      - '@kiboko.facebook_catalog.factory.family'
 
-  kiboko.magento_stockpile.repository.doctrine.product_attribute_value.datetime:
-    parent: 'kiboko.magento_stockpile.repository.doctrine.product_attribute_value'
+  kiboko.facebook_catalog.repository.doctrine.product_attribute:
+    class: '%kiboko.facebook_catalog.repository.doctrine.product_attribute.class%'
     arguments:
-      - '@database.connection'
-      - '@kiboko.magento_stockpile.query_builder.product_attribute_value.datetime'
-      - '@kiboko.magento_stockpile.repository.doctrine.attribute'
-      - '@kiboko.magento_stockpile.factory.product_attribute_value.datetime'
+      - '@database_connection'
+      - '@kiboko.facebook_catalog.query_builder.product_attribute'
+
+  kiboko.facebook_catalog.repository.doctrine.product_attribute_value:
+    class: '%kiboko.facebook_catalog.repository.doctrine.product_attribute_value.class%'
+    abstract: true
+
+  kiboko.facebook_catalog.repository.doctrine.product_attribute_value.datetime:
+    parent: 'kiboko.facebook_catalog.repository.doctrine.product_attribute_value'
+    arguments:
+      - '@database_connection'
+      - '@kiboko.facebook_catalog.query_builder.product_attribute_value.datetime'
+      - '@kiboko.facebook_catalog.repository.cached.product_attribute'
+      - '@kiboko.facebook_catalog.factory.product_attribute_value.datetime'
     tags:
-      - { name: kiboko.magento_stockpile.repository.product_attribute_value, backend: datetime }
+      - { name: kiboko.facebook_catalog.repository.product_attribute_value, backend: datetime }
 
-  kiboko.magento_stockpile.repository.doctrine.product_attribute_value.decimal:
-    parent: 'kiboko.magento_stockpile.repository.doctrine.product_attribute_value'
+  kiboko.facebook_catalog.repository.doctrine.product_attribute_value.decimal:
+    parent: 'kiboko.facebook_catalog.repository.doctrine.product_attribute_value'
     arguments:
-      - '@database.connection'
-      - '@kiboko.magento_stockpile.query_builder.product_attribute_value.decimal'
-      - '@kiboko.magento_stockpile.repository.doctrine.attribute'
-      - '@kiboko.magento_stockpile.factory.product_attribute_value.decimal'
+      - '@database_connection'
+      - '@kiboko.facebook_catalog.query_builder.product_attribute_value.decimal'
+      - '@kiboko.facebook_catalog.repository.cached.product_attribute'
+      - '@kiboko.facebook_catalog.factory.product_attribute_value.decimal'
     tags:
-      - { name: kiboko.magento_stockpile.repository.product_attribute_value, backend: decimal }
+      - { name: kiboko.facebook_catalog.repository.product_attribute_value, backend: decimal }
 
-  kiboko.magento_stockpile.repository.doctrine.product_attribute_value.integer:
-    parent: 'kiboko.magento_stockpile.repository.doctrine.product_attribute_value'
+  kiboko.facebook_catalog.repository.doctrine.product_attribute_value.integer:
+    parent: 'kiboko.facebook_catalog.repository.doctrine.product_attribute_value'
     arguments:
-      - '@database.connection'
-      - '@kiboko.magento_stockpile.query_builder.product_attribute_value.integer'
-      - '@kiboko.magento_stockpile.repository.doctrine.attribute'
-      - '@kiboko.magento_stockpile.factory.product_attribute_value.integer'
+      - '@database_connection'
+      - '@kiboko.facebook_catalog.query_builder.product_attribute_value.integer'
+      - '@kiboko.facebook_catalog.repository.cached.product_attribute'
+      - '@kiboko.facebook_catalog.factory.product_attribute_value.integer'
     tags:
-      - { name: kiboko.magento_stockpile.repository.product_attribute_value, backend: int }
+      - { name: kiboko.facebook_catalog.repository.product_attribute_value, backend: int }
 
-  kiboko.magento_stockpile.repository.doctrine.product_attribute_value.text:
-    parent: 'kiboko.magento_stockpile.repository.doctrine.product_attribute_value'
+  kiboko.facebook_catalog.repository.doctrine.product_attribute_value.text:
+    parent: 'kiboko.facebook_catalog.repository.doctrine.product_attribute_value'
     arguments:
-      - '@database.connection'
-      - '@kiboko.magento_stockpile.query_builder.product_attribute_value.text'
-      - '@kiboko.magento_stockpile.repository.doctrine.attribute'
-      - '@kiboko.magento_stockpile.factory.product_attribute_value.text'
+      - '@database_connection'
+      - '@kiboko.facebook_catalog.query_builder.product_attribute_value.text'
+      - '@kiboko.facebook_catalog.repository.cached.product_attribute'
+      - '@kiboko.facebook_catalog.factory.product_attribute_value.text'
     tags:
-      - { name: kiboko.magento_stockpile.repository.product_attribute_value, backend: text }
+      - { name: kiboko.facebook_catalog.repository.product_attribute_value, backend: text }
 
-  kiboko.magento_stockpile.repository.doctrine.product_attribute_value.varchar:
-    parent: 'kiboko.magento_stockpile.repository.doctrine.product_attribute_value'
+  kiboko.facebook_catalog.repository.doctrine.product_attribute_value.varchar:
+    parent: 'kiboko.facebook_catalog.repository.doctrine.product_attribute_value'
     arguments:
-      - '@database.connection'
-      - '@kiboko.magento_stockpile.query_builder.product_attribute_value.varchar'
-      - '@kiboko.magento_stockpile.repository.doctrine.attribute'
-      - '@kiboko.magento_stockpile.factory.product_attribute_value.varchar'
+      - '@database_connection'
+      - '@kiboko.facebook_catalog.query_builder.product_attribute_value.varchar'
+      - '@kiboko.facebook_catalog.repository.cached.product_attribute'
+      - '@kiboko.facebook_catalog.factory.product_attribute_value.varchar'
     tags:
-      - { name: kiboko.magento_stockpile.repository.product_attribute_value, backend: varchar }
+      - { name: kiboko.facebook_catalog.repository.product_attribute_value, backend: varchar }
 
-  kiboko.magento_stockpile.repository.cached.family:
-    class: '%kiboko.magento_stockpile.repository.cached.family.class%'
+  kiboko.facebook_catalog.repository.doctrine.product:
+    class: '%kiboko.facebook_catalog.repository.doctrine.product.class%'
     arguments:
-      - '@kiboko.magento_stockpile.repository.doctrine.family'
+      - '@database_connection'
+      - '@kiboko.facebook_catalog.query_builder.product'
+      - '@kiboko.facebook_catalog.factory.product.facade'
+
+  kiboko.facebook_catalog.repository.dummy.inventory:
+    class: '%kiboko.facebook_catalog.repository.dummy.inventory.class%'
+    arguments:
+      - '@kiboko.facebook_catalog.repository.doctrine.product_attribute'
+
+  kiboko.facebook_catalog.repository.dummy.url_rewrite:
+    class: '%kiboko.facebook_catalog.repository.dummy.url_rewrite.class%'
+    arguments:
+      - '@kiboko.facebook_catalog.repository.doctrine.product_attribute'
+
+  kiboko.facebook_catalog.repository.facade.product_attribute_value:
+   class: '%kiboko.facebook_catalog.repository.facade.product_attribute_value.class%'
+   arguments:
+     - '@kiboko.facebook_catalog.repository.product_attribute_value.broker'
+
+  kiboko.facebook_catalog.repository.cached.product_attribute:
+    class: '%kiboko.facebook_catalog.repository.cached.product_attribute.class%'
+    arguments:
+      - '@kiboko.facebook_catalog.repository.doctrine.product_attribute'
+
+  kiboko.facebook_catalog.repository.cached.family:
+    class: '%kiboko.facebook_catalog.repository.cached.family.class%'
+    arguments:
+      - '@kiboko.facebook_catalog.repository.doctrine.family'
 

@@ -1,74 +1,74 @@
 parameters:
-  kiboko.magento_stockpile.query_builder.family.class:                  Kiboko\Component\MagentoDriver\QueryBuilder\Doctrine\FamilyQueryBuilder
-  kiboko.magento_stockpile.query_builder.product.class:                 Kiboko\Component\MagentoDriver\QueryBuilder\Doctrine\ProductQueryBuilder
-  kiboko.magento_stockpile.query_builder.product_attribute.class:       Kiboko\Component\MagentoDriver\QueryBuilder\Doctrine\ProductAttributeQueryBuilder
-  kiboko.magento_stockpile.query_builder.product_attribute_value.class: Kiboko\Component\MagentoDriver\QueryBuilder\Doctrine\ProductAttributeValueQueryBuilder
+  kiboko.facebook_catalog.query_builder.family.class:                  Kiboko\Component\MagentoDriver\QueryBuilder\Doctrine\FamilyQueryBuilder
+  kiboko.facebook_catalog.query_builder.product.class:                 Kiboko\Component\MagentoDriver\QueryBuilder\Doctrine\ProductQueryBuilder
+  kiboko.facebook_catalog.query_builder.product_attribute.class:       Kiboko\Component\MagentoDriver\QueryBuilder\Doctrine\ProductAttributeQueryBuilder
+  kiboko.facebook_catalog.query_builder.product_attribute_value.class: Kiboko\Component\MagentoDriver\QueryBuilder\Doctrine\ProductAttributeValueQueryBuilder
 
 services:
-  kiboko.magento_stockpile.query_builder.family:
-    class: '%kiboko.magento_stockpile.query_builder.family.class%'
+  kiboko.facebook_catalog.query_builder.family:
+    class: '%kiboko.facebook_catalog.query_builder.family.class%'
     arguments:
-      - '@database.connection'
-      - '%kiboko.magento_stockpile.backend.family.table%'
-      - '%kiboko.magento_stockpile.backend.family.fields%'
+      - '@database_connection'
+      - '%kiboko.facebook_catalog.backend.family.table%'
+      - '%kiboko.facebook_catalog.backend.family.fields%'
 
-  kiboko.magento_stockpile.query_builder.product:
-    class: '%kiboko.magento_stockpile.query_builder.product.class%'
+  kiboko.facebook_catalog.query_builder.product:
+    class: '%kiboko.facebook_catalog.query_builder.product.class%'
     arguments:
-      - '@database.connection'
-      - '%kiboko.magento_stockpile.backend.product.table%'
-      - '%kiboko.magento_stockpile.backend.family.table%'
-      - '%kiboko.magento_stockpile.backend.category_product.table%'
-      - '%kiboko.magento_stockpile.backend.product.fields%'
+      - '@database_connection'
+      - '%kiboko.facebook_catalog.backend.product.table%'
+      - '%kiboko.facebook_catalog.backend.family.table%'
+      - '%kiboko.facebook_catalog.backend.category_product.table%'
+      - '%kiboko.facebook_catalog.backend.product.fields%'
       
-  kiboko.magento_stockpile.query_builder.product_attribute:
-    class: '%kiboko.magento_stockpile.query_builder.product_attribute.class%'
+  kiboko.facebook_catalog.query_builder.product_attribute:
+    class: '%kiboko.facebook_catalog.query_builder.product_attribute.class%'
     arguments:
-      - '@database.connection'
-      - '%kiboko.magento_stockpile.backend.attribute.standard.table%'
-      - '%kiboko.magento_stockpile.backend.attribute.catalog_extras.table%'
-      - '%kiboko.magento_stockpile.backend.attribute.catalog_entity.table%'
-      - '%kiboko.magento_stockpile.backend.attribute.variant_axis.table%'
-      - '%kiboko.magento_stockpile.backend.attribute.family.table%'
-      - '%kiboko.magento_stockpile.backend.attribute.standard.fields%'
-      - '%kiboko.magento_stockpile.backend.attribute.catalog_extras.fields%'
+      - '@database_connection'
+      - '%kiboko.facebook_catalog.backend.attribute.standard.table%'
+      - '%kiboko.facebook_catalog.backend.attribute.catalog_extras.table%'
+      - '%kiboko.facebook_catalog.backend.attribute.catalog_entity.table%'
+      - '%kiboko.facebook_catalog.backend.attribute.variant_axis.table%'
+      - '%kiboko.facebook_catalog.backend.attribute.family.table%'
+      - '%kiboko.facebook_catalog.backend.attribute.standard.fields%'
+      - '%kiboko.facebook_catalog.backend.attribute.catalog_extras.fields%'
 
-  kiboko.magento_stockpile.query_builder.product_attribute_value.datetime:
-    class: '%kiboko.magento_stockpile.query_builder.product_attribute_value.class%'
+  kiboko.facebook_catalog.query_builder.product_attribute_value.datetime:
+    class: '%kiboko.facebook_catalog.query_builder.product_attribute_value.class%'
     arguments:
-      - '@database.connection'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.datetime.table%'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.variant_axis.table%'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.fields%'
+      - '@database_connection'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.datetime.table%'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.variant_axis.table%'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.fields%'
 
-  kiboko.magento_stockpile.query_builder.product_attribute_value.integer:
-    class: '%kiboko.magento_stockpile.query_builder.product_attribute_value.class%'
+  kiboko.facebook_catalog.query_builder.product_attribute_value.integer:
+    class: '%kiboko.facebook_catalog.query_builder.product_attribute_value.class%'
     arguments:
-      - '@database.connection'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.integer.table%'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.variant_axis.table%'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.fields%'
+      - '@database_connection'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.integer.table%'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.variant_axis.table%'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.fields%'
 
-  kiboko.magento_stockpile.query_builder.product_attribute_value.decimal:
-    class: '%kiboko.magento_stockpile.query_builder.product_attribute_value.class%'
+  kiboko.facebook_catalog.query_builder.product_attribute_value.decimal:
+    class: '%kiboko.facebook_catalog.query_builder.product_attribute_value.class%'
     arguments:
-      - '@database.connection'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.decimal.table%'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.variant_axis.table%'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.fields%'
+      - '@database_connection'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.decimal.table%'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.variant_axis.table%'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.fields%'
 
-  kiboko.magento_stockpile.query_builder.product_attribute_value.text:
-    class: '%kiboko.magento_stockpile.query_builder.product_attribute_value.class%'
+  kiboko.facebook_catalog.query_builder.product_attribute_value.text:
+    class: '%kiboko.facebook_catalog.query_builder.product_attribute_value.class%'
     arguments:
-      - '@database.connection'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.text.table%'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.variant_axis.table%'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.fields%'
+      - '@database_connection'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.text.table%'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.variant_axis.table%'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.fields%'
 
-  kiboko.magento_stockpile.query_builder.product_attribute_value.varchar:
-    class: '%kiboko.magento_stockpile.query_builder.product_attribute_value.class%'
+  kiboko.facebook_catalog.query_builder.product_attribute_value.varchar:
+    class: '%kiboko.facebook_catalog.query_builder.product_attribute_value.class%'
     arguments:
-      - '@database.connection'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.varchar.table%'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.variant_axis.table%'
-      - '%kiboko.magento_stockpile.backend.product_attribute_value.fields%'
+      - '@database_connection'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.varchar.table%'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.variant_axis.table%'
+      - '%kiboko.facebook_catalog.backend.product_attribute_value.fields%'

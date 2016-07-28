@@ -1,7 +1,11 @@
 parameters:
-  kiboko.magento_stockpile.persister.broker.class: Kiboko\Component\MagentoDriver\Broker\ProductAttributeValuePersisterBroker
+  kiboko.facebook_catalog.repository.product_attribute_value.broker.class: Kiboko\Component\MagentoDriver\Broker\ProductAttributeValueRepositoryBroker
+
+  kiboko.facebook_catalog.factory.product.broker.class: Kiboko\Component\MagentoDriver\Broker\ProductFactoryBroker
 
 services:
-  kiboko.magento_stockpile.persister.broker:
-    abstract: true
-    class: '%kiboko.magento_stockpile.persister.broker.class%'
+  kiboko.facebook_catalog.repository.product_attribute_value.broker:
+    class: '%kiboko.facebook_catalog.repository.product_attribute_value.broker.class%'
+
+  kiboko.facebook_catalog.factory.product.broker:
+    class: '%kiboko.facebook_catalog.factory.product.broker.class%'
