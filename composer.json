@@ -1,6 +1,6 @@
 {
-    "name": "symfony/framework-standard-edition",
-    "license": "Proprietary",
+    "name": "kiboko/magento-facebook-catalog-cli",
+    "license": "MIT",
     "type": "project",
     "authors": [
         {
